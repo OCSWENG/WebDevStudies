@@ -1,5 +1,6 @@
 WebSite Development Projects :
-	Udemy ; Development Island based in Bedford, United Kindgom
+	Class:	Udemy ; Development Island based in Bedford, United Kindgom
+	Purpose: SW Engineering proof
 
 	1: Mathematics Tutorials Website
 		- HTML, CSS
