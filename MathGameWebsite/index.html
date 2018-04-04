@@ -36,18 +36,18 @@
             
             <div id="multiChoice">
                 
-                <div id="choice1" class="box"></div>
-                <div id="choice2" class="box"></div>
-                <div id="choice3" class="box"></div>
-                <div id="choice4" class="box"></div>            
+                <div id="choice1" class="box" onclick="isCorrect(this.id)"></div>
+                <div id="choice2" class="box" onclick="isCorrect(this.id)"></div>
+                <div id="choice3" class="box" onclick="isCorrect(this.id)"></div>
+                <div id="choice4" class="box" onclick="isCorrect(this.id)"></div>            
             </div>
             
             <div id="startReset" onclick="changeStatus()">
                     Reset Game
             </div>
             
-            <div id="timeRemaining">
-                    Time Remaining: <span id="timeremainingvalue">60</span> seconds
+            <div id="errorCount">
+                    Total Errors: <span id="errorCountgvalue">0</span> 
             </div>
             
             <div id="gameOver">

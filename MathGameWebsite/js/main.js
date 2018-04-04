@@ -1,13 +1,22 @@
+// utilities 
+function sleep(ms) {
+    var unixtime_ms = new Date().getTime();
+    while(new Date().getTime() < unixtime_ms + ms) {}
+}
 
-//	start/reset action
+function changeDisplay ( Id, value) {
+   this.document.getElementById(Id).style.display=value;
+}
 
-// StartReset Action 
-//var resetState = 0;
-//var startState = 1;
-//var curState = startState;  //??
+function changeVisibilty ( Id, value){
+   this.document.getElementById(Id).style.visibility=value;
+}
 
-// The game is already playing so hitting the start button should just reload the page.
+var answer = -1;
 
+// This is the start and reset part of the game
+// Problems, rendering the screen only works in debug?
+// The ability to generate a game loop and take user input
 
 var currentStatus = "";
 function changeStatus() {
@@ -25,7 +34,8 @@ function changeStatus() {
     else if (result1) {
         currentState = "Start Game";
         this.document.getElementById("startReset").innerHTML = currentState;
-        runGame();
+//              this.document.getElementById("scorevalue").innerHTML=0;
+        computeQA();
     }
     else {        
         this.document.getElementById("gameOver").innerHTML = "Unkown Problem report to Developer";
@@ -33,93 +43,98 @@ function changeStatus() {
 }
 
 
-function runGame () {
- //   this.document.reload();
-//    currState = resetState;
+function gameOver () {
+    changeDisplay ( "gameOver", "block");
+    var score = this.document.getElementById("scorevalue").innerHTML;
+    this.document.getElementById("gameOver").innerHTML="GAME OVER! </br> YOUR SCORE IS "+score; 
     
-//}
-//if the state is in reset and the start button
-//if the state is in reset and the start button
-   //      set score to zero 
-    // should be a function to set the score to zero
-    // should be a function to generate Q&A
-    
-    
-    // generate new q&a
-    // Number x Number
-    // Answer1: Number1 Answer2: Number2 Answer3: Number3 Answer4: Number4
-    
-    var num1 = Math.floor(Math.random() * 9 +1) ;
+}
 
-    var num2 = Math.floor(Math.random() * 9 +1);
-    
-    var answer = num1 * num2;
-    var question = ""+num1+"x"+num2;
+function incrementErrorCount() {
+    var errorCount = this.document.getElementById("errorCountgvalue").innerHTML;
+    errorCount ++;
+    this.document.getElementById("errorCountgvalue").innerHTML=errorCount;
+    if ( errorCount > 2) {gameOver();}
+}
 
-    var generateNumber = 0;
-    var allGenNumbers =  [0,0,0,0];
-    var randGenNumbers = [0,0,0,0];
+
+
+// Obtain the answer, generate 3 other possible answers and display
+function computeQA () {
+        var num1 = Math.floor(Math.random() * 9 +1) ;
+        var num2 = Math.floor(Math.random() * 9 +1);
     
-    // now randomly select an index to place the real answer.
-    var index = Math.floor(Math.random() *4);
-    allGenNumbers[index]=answer;
+   
+        answer = num1 * num2;
+        var question = ""+num1+"x"+num2;
+        var generateNumber = 0;
+        var allGenNumbers =  [0,0,0,0];
+        var randGenNumbers = [0,0,0,0];
     
-    // should be a function returning an array
-    while (generateNumber < 3) {
-        
-        var possibleAnswer = Math.floor(Math.random() * 100 +1);
+
+        // now randomly select an index to place the real answer.
+        var index = Math.floor(Math.random() *4);
+        allGenNumbers[index]=answer;
+    
+        // should be a function returning an array
+        while (generateNumber < 3) {
+            var possibleAnswer = Math.floor(Math.random() * 100 +1);
         
         // problem is the random generator must produce unique numbers
-        while ( randGenNumbers.includes(possibleAnswer) != 0 || possibleAnswer == answer) {
-            possibleAnswer = Math.floor(Math.random() * 100 +1);            
-        }
-        
-        randGenNumbers.push(possibleAnswer);
-        generateNumber++;
-    }
-    
-    for (var x= 0; x< 4; x++) {
-        if (x != index) {
-            allGenNumbers[x] = randGenNumbers.pop();
-        }
-    }
+            while ( randGenNumbers.includes(possibleAnswer) != 0 || possibleAnswer == answer) {
+                possibleAnswer = Math.floor(Math.random() * 100 +1);            
+            }
 
-    this.document.getElementById("scorevalue").innerHTML=0;
-    this.document.getElementById("question").innerHTML=question;
-    var y = 1;
-    var len = allGenNumbers.length;
-    var itr = 0;
-    for (; itr < len; itr++) { 
-        var id  ="choice"+y;
-        this.document.getElementById(id).innerHTML=allGenNumbers[itr];
-        y++;
+            randGenNumbers.push(possibleAnswer);
+            generateNumber++;
+        }
+
+        for (var x= 0; x< 4; x++) {
+            if (x != index) {
+                allGenNumbers[x] = randGenNumbers.pop();
+            }
+        }
+
+  
+        this.document.getElementById("question").innerHTML=question;
+        var y = 1;
+        var len = allGenNumbers.length;
+        var itr = 0;
+        for (; itr < len; itr++) { 
+            var id  ="choice"+y;
+            this.document.getElementById(id).innerHTML=allGenNumbers[itr];
+            y++;
+        }
+}
+
+
+// The most used function
+// This will respond to answers selected if more than 2 errors given game over
+function isCorrect (value) {
+    var choiceValue = this.document.getElementById(value).innerHTML;     
+    
+    if ( answer == choiceValue){
+        // set the correct visible for one second and add to the score
+      //  changeVisibilty ("correctMsg", "visible");
+    //    sleep(200);
+        var scoreValue = this.document.getElementById("scorevalue").innerHTML;
+        scoreValue++;
+        this.document.getElementById("scorevalue").innerHTML=scoreValue; 
+      //  sleep(200);
+    //    changeVisibilty ("correctMsg", "hidden");
+    //    sleep(200);
+        computeQA();
+    }
+    else {
+        // set the try again visible for 2 seconds
+     //   changeVisibilty ("wrongMsg", "visible");
+    //    sleep(200);
+    //    changeVisibilty ("wrongMsg", "hidden");
+        incrementErrorCount();
     }
 }
 
 
-//	playing yes:
-//		Reload Page
-
-//	playing no:
-
-
-//		change start button to reset button
-
-
-    //    if in start state
-    //    answer box selected:
-    //        if correct:
-    //            increase score
-    //            show correct box
-    //            generate new Q&A
-    //        else:
-    //            show try again box for 1 sec
-
-
-//		show countdown
-//		reduce time by 1 sec until it reaches zero
-//		when time is up show game over, score and change 
-//		reset button to start button.
 
 
 
