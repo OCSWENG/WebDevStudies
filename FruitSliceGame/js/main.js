@@ -8,25 +8,35 @@ var fruits= [
 var yaxis;
 var action;
 
+
+
+
+$(function (){
             /*
                 Action: Slice Fruit
                 play sound explode fruit
                 increase score by one
             */
             // strike at it!
-$("#fruitId").mouseover(function () {
+
+    $("#fruitId").mouseover(function () {
         //    play sound explode fruit
         // increase score by one
         score += 1;
         $("#scoreValue").html(score);
+        $("#sliceSound")[0].play();
     
-        stopFruitDrop ();
-        sendFruits ();
-});
-
-
-$(function (){
-  
+        clearInterval(action);
+      //  $("#fruitId").hide("explode",500);
+        // has problems rendering the screen after 
+        // the first explosion.
+        
+        $("#fruitId").hide();
+        
+        setTimeout(sendFruits (), 500);
+}); 
+    
+    
   $("#startReset").click(function(){
         var textVal = $("#startReset").text();
         // start:
@@ -54,7 +64,7 @@ $(function (){
             playing = false;            
         }
     });
-});
+
 
 /*
 click start/reset button
@@ -152,3 +162,5 @@ function stopFruitDrop () {
     clearInterval(action);
     $("#fruitId").hide();    
 }
+    
+});
