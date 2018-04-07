@@ -1,0 +1,114 @@
+html{
+    height=100%;
+    background: radial-gradient(circle, white,grey);
+    
+}
+
+#container {
+    background: beige;
+    border-radius:  10px;
+    height: 600px;
+    width: 800px;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    
+    padding: 10px;
+    margin: 10px auto;
+    background: linear-gradient(red,blue);
+    box-shadow: 4px 4px 0px 0px black;
+    -moz-box-shadow: 4px 4px 0px 0px black;
+    -webkit-box-shadow: 4px 4px 0px 0px black; position: relative;
+
+}
+
+
+#scoreCard {
+    
+    position: absolute;
+    left: 650px;
+    top: 10px;
+    width: 70px;
+    padding: 25px;
+    margin: 10px;
+    color: gold;
+    background: purple;
+    box-shadow: 4px 4px 0px 0px black;
+    border-radius: 15px;
+}
+
+
+#lives {
+    position:absolute;
+    left: 25px;
+    width: 100px;
+    top: 10px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background: white;
+    color: red;
+    box-shadow: 4px 4px 0px 0px black;
+    display: none;
+}
+
+
+#actionBox{
+    position: relative;
+    
+    color: grey;
+    background: linear-gradient(white,orange);
+    border-radius: 25px;
+    box-shadow: 4px 4px 0px 0px black;
+    height: 400px;
+    width: 600px;
+    top: 120px;
+    left: 100px;
+    cursor:crosshair;
+    overflow: hidden;
+}
+
+#startReset {
+    position : absolute;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+    width: 75px;
+    border-radius: 15px;
+    box-shadow: 4px 4px 0px 0px black;
+    color:black;
+    background: aqua;
+    cursor: pointer;
+    top: 540px;
+    left: 25px;
+}
+
+
+
+#gameOver{
+    height: 300px;
+    width: 300px;
+    background: linear-gradient(white,gold);
+    color: green;
+    font-size: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 15px;
+    position: relative;
+    top: -200px;
+    left: 250px;
+    z-index: 2;
+    display: none;
+    
+}
+
+.fruit {
+    display: none;
+    position: absolute;
+}
+
+#fruitId : hover {
+    
+    
+}
