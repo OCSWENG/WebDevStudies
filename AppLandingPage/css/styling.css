@@ -1,0 +1,106 @@
+
+.jumbotron {
+    background: url(http://freenaturestock.s3.amazonaws.com/300.jpg) center center;
+    background-size: cover;
+    height: 600px;  
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(white,orange);
+}
+
+.featured {
+    color: black;
+}
+
+.featured h1 {
+    padding: 45px;
+}
+
+.featured .btn-default {
+    font-weight: bold;
+    color: gold;
+    background: black;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-right: 15px;
+    width: 160px;
+}
+
+.featured .btn-default:hover {
+    background-color: grey; 
+}
+
+
+/* Styling for 480 to 780 px */
+@media(min-width:480px) and (max-width:768px) {
+    .jumbotron{
+        height:410px;
+        margin:0;
+    }
+    
+    .logo {
+        width: 50px;
+        height:50px;
+    }
+    .featured h1 {
+        padding-top: 30px;
+    }
+    
+    .feature p {
+        font-size: 17px;
+    }
+    
+    .featured {
+        text-align: center;
+    }
+}
+
+/* Styling for under 480 */
+@media(min-width:480px) {
+    .jumbotron{
+        height:410px;
+        margin:0;
+    }
+    
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+    .featured h1 {
+        padding-top: 10px;
+    }
+    
+    .feature p, .feature a {
+        font-size: 13px;
+    }
+    
+    .featured {
+        text-align: center;
+    }
+    .trial img {
+        width: 100px;
+        height: 35px;
+        margin: 10px;
+    }
+}
+
+.trial {
+    text-align: center;
+    padding: 20px 0 40px 0;
+    color: black;
+}
+
+.trial img {
+    height: 125px;
+    width: 200px;
+    
+}
+
+.footer {
+    background-color: grey;
+    font-size: 15px;
+    padding:10px;
+}
