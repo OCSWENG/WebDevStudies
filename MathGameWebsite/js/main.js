@@ -26,12 +26,12 @@ function changeStatus() {
     var result1 = pattern1.test(currentState);
     var result2 = pattern2.test(currentState);
     
-    if (result2) {
+    if (result1) {
         currentState = "Reset Game";
         this.document.getElementById("startReset").innerHTML = currentState;
         this.location.reload();
     }
-    else if (result1) {
+    else if (result2) {
         currentState = "Start Game";
         this.document.getElementById("startReset").innerHTML = currentState;
 //              this.document.getElementById("scorevalue").innerHTML=0;
@@ -47,6 +47,7 @@ function gameOver () {
     changeDisplay ( "gameOver", "block");
     var score = this.document.getElementById("scorevalue").innerHTML;
     this.document.getElementById("gameOver").innerHTML="GAME OVER! </br> YOUR SCORE IS "+score; 
+    this.document.getElementById("startReset").innerHTML = "Reset Game";
     
 }
 
