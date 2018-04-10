@@ -44,7 +44,8 @@ $(function (){
             playing = true;
             $("#startReset").text( "Reset");
             // set score to Zero.
-            score = 0;  
+            score = 0;
+            livesLeft = 3;
             $("#scoreValue").html(score);
             
             //    show lives left box
