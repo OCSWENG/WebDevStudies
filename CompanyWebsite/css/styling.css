@@ -14,9 +14,13 @@ body {
     
 }
 
-#navbarCollapse {
+#navbarCollapse ul li{
     text-align: center;
+    background: transparent;
+    color: aliceblue;
 }
+
+
 
 .navbar-nav {
   flex-flow: row nowrap;
@@ -32,15 +36,20 @@ body {
 }
 
 .nav li {
-    color: #fff;
+    color: white;
     font-size: 17px;
     margin-right: 35px;
     padding: 10px 0px;
     text-align: center;
 }
 
+.nav li a {
+    color: white;
+    text-decoration: none;
+}
 .nav li:hover {
-    border-bottom:  1px solid lightblue;
+    border-bottom:  1px solid aqua;
+    text-decoration: none;
 }
 
 
@@ -68,7 +77,7 @@ body {
 
 .btn {
 
-    background-color: lightskyblue;
+    background-color: white;
     font-size: 18px;
     color: grey;
     border-radius: 10px;
