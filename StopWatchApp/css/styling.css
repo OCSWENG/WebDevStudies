@@ -1,0 +1,66 @@
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background: url('../images/sierraMtnRange.png') fixed center center;
+    background-size: cover;
+    color: white;
+}
+    
+#title {
+    text-align: center;
+    font-size: 4vw;
+    
+}
+
+#lap {
+    text-align:right;
+    font-size:4vw;   
+}
+
+#timer {
+    text-align:center;
+    font-size:8vw;
+}
+
+
+#controlContainer {
+    margin-bottom:100px;
+}
+
+.control {
+    color:black;
+    background-color: aqua;
+    height: 12vw;
+    width:12vw;
+    border-radius: 100%;
+    text-align: center;
+    padding: 33% 0;
+    font-size: 2.0vw;
+    cursor: pointer;  
+}
+
+.control:active{
+    color:white;
+    background-color: black;
+}
+
+#laps {
+    max-height: 270px;
+    overflow-y: scroll;    
+}
+
+.lap{
+    height: 50px;
+    border-bottom: 1px solid white;
+    margin: 15px;
+}
+
+.laptimetitle {
+    font-size: 1.5em;
+    float: left;
+}
+
+.laptime {
+    font-size:2em;
+    float:right;
+}
