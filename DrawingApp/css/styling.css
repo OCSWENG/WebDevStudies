@@ -6,6 +6,10 @@ body {
 
 #header {
     background: linear-gradient(white,blue);
+    background: -webkit-linear-gradient(white,blue);
+    background: -moz-linear-gradient(white,blue);
+    background: -o-linear-gradient(white,blue);
+    background: -ms-linear-gradient(white,blue);
     height: 80px;
     width: 500px;
     margin: 10px auto;
@@ -39,6 +43,10 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    transform: -webkit-translate(-50%,-50%);
+    transform: -moz-translate(-50%,-50%);
+    transform: -ms-translate(-50%,-50%);
+    transform: -o-translate(-50%,-50%);    
 }
 
 #thicknessInput{
@@ -86,7 +94,7 @@ body {
     color: black;
     background: linear-gradient(white, skyblue);
     background: -webkit-linear-gradient(white, skyblue);
-    background: -moz-linear-gradient(white, skyblue;
+    background: -moz-linear-gradient(white, skyblue);
     background: -o-linear-gradient(white, skyblue);
     background: -ms-linear-gradient(white, skyblue);
 }
