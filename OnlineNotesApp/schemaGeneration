@@ -22,3 +22,4 @@ CREATE TABLE forgotpassword (
 );
 
 INSERT INTO USERS ('username','email', 'password', 'activation') VALUES ('charlie', 'alpha@yahoo.com','savage', 1234);
+

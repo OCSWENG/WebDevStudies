@@ -64,9 +64,9 @@ $password = "candyPaint";
 */
 
 //Prepare variables for the queries
-//$username = mysqli_real_escape_string($link, $username);
-//$email = mysqli_real_escape_string($link, $email);
-//$password = mysqli_real_escape_string($link, $password);
+//$username = $db->escapeString ( $username );
+//$email = $db->escapeString ( $email );
+//$password = $db->escapeString ( $password );
 
 // bigger hash is required in real world applications
 $password = hash('sha256', $password);
