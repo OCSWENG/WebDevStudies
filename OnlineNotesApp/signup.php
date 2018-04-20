@@ -82,15 +82,6 @@ $ret = $db->query("SELECT * FROM USERS WHERE username = '$username'" ); //$state
 $row = $ret->fetchArray(SQLITE3_ASSOC);
 if ( $row ) {
     echo '<div class="alert alter-danger>The email :' . $email . ' is already registered. </div>';
-
-/*    
-    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
-      echo "USERNAME = ". $row['username'] . "\n";
-      echo "EMAIL = ". $row['email'] ."\n";
-      echo "PASSWORD = ". $row['password'] ."\n";
-      echo "ACTIVATION = ".$row['activation'] ."\n\n";
-   }
-    */
         $db->close();
     exit;
 }
