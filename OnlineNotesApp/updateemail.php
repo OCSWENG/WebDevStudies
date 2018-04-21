@@ -10,10 +10,11 @@ $newemail = $_POST['email'];
 //check if new email exists
 $db->exec("BEGIN");
 $sql = "SELECT * FROM users WHERE email='$newemail'";
-$sqlCount = "SELECT count(*) FROM users WHERE email='$newemail'";
+$sqlCount = "SELECT COUNT(*) as count FROM users WHERE email='$newemail'";
 
 $result = $db->query($sql);
-$count  = ($result->numColumns() && $result->columnType(0) != SQLITE3_NULL);
+$count  = $db->numRows($sqlCount);
+
 if($count>0){
     echo "<div class='alert alert-danger'>There is already as user registered with that email! Please choose another one!</div>"; exit;
 }
@@ -21,9 +22,10 @@ if($count>0){
 
 //get the current email
 $sql = "SELECT * FROM users WHERE userid='$userid'";
+$sql_count = "SELECT COUNT(*) as count FROM users WHERE userid='$userid'";
 $result = db->query($sql);
 
-$count = ($result->numColumns() && $result->columnType(0) != SQLITE3_NULL);
+$count = db->numRows();
 
 if($count == 1){
     $row = $result->fetchArray(SQLITE3_ASSOC);

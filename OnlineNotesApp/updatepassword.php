@@ -22,9 +22,10 @@ if(empty($_POST["currentpassword"])){
     //check if given password is correct
     $userid = $_SESSION["userid"];
     $sql = "SELECT password FROM users WHERE userid='$userid'";
+    $sql_count = "SELECT COUNT(password) as count FROM users WHERE userid='$userid'";
     $db->exec('BEGIN');
     $result = $db->query( $sql);     
-    $count = ($result->numColumns() && $result->columnType(0) != SQLITE3_NULL);
+    $count = $db->numRows($sql_count);
     $db->exec('COMMIT');
     if($count !== 1){
         echo '<div class="alert alert-danger">There was a problem running the query</div>';
@@ -33,8 +34,7 @@ if(empty($_POST["currentpassword"])){
         if($currentPassword != $row['password']){
             $errors .= $incorrectCurrentPassword;
         }
-    }
-    
+    } 
 }
 
 if(empty($_POST["password"])){

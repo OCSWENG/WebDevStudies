@@ -24,9 +24,10 @@ if($errors){
 
 $email  = $db->escapeString ( $email );
 $sql = "SELECT * FROM users WHERE email ='$email'";
+$sql_count = "SELECT COUNT(*) as count FROM users WHERE email ='$email'";
 $db->exec('BEGIN');
 $result = $db->query($sql);
-$count = ($result->numColumns() && $result->columnType(0) != SQLITE3_NULL);
+$count = $db->numRows($sql_count);
 if($count != 1){
     echo '<div class="alert alert-danger">That email does not exist on our database!</div>';  
     exit;

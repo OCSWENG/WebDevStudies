@@ -1,6 +1,28 @@
 <?php
 session_start();
-if(!isset($_SESSION['userid']))
+if(!isset($_SESSION['userid'])){
+    header("location:index.php");
+}
+include ('connection.php');
+
+$userid = $_SESSION['userid'];
+
+//get username and email
+$sql = "SELECT * FROM users WHERE userid='$userid'";
+$sql_count = "SELECT COUNT(*) as count  FROM users WHERE userid='$userid'";
+$db->exec('BEGIN');
+$result = $db->query($sql);
+
+$count = $db->numRows($sql_count);
+
+if($count == 1){
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $username = $row['username'];
+    $email = $row['email']; 
+}else{
+    echo "There was an error retrieving the username and email from the database";   
+}
+$db->exec("COMMIT");
 
 ?>
 <!doctype html>
@@ -38,11 +60,11 @@ if(!isset($_SESSION['userid']))
                         <li class="active"><a href="#">Profile</a></li>
                         <li><a href="#">Help</a></li>
                         <li><a href="#">Contact us</a></li>
-                        <li><a href="#">MyNotes</a></li>
+                        <li><a href="mainpageloggedin.php">MyNotes</a></li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logged in as <strong><?php echo $username; ?><</strong></a></li>
-                        <li><a href="#">Log out</a></li>
+                        <li><a href="#">Logged in as <b><?php echo $username; ?></b></a></li>
+                        <li><a href="index.php?logout=1">Log out</a></li>
                       </ul>
                 </div>
             </div>
