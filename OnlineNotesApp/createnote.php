@@ -2,11 +2,11 @@
 session_start();
 include('connection.php');
 
-$user_id = $_SESSION['user_id'];
+$userid = $_SESSION['userid'];
 //get the current time
 $time = time();
 //run a query to create new note
-$sql = "INSERT INTO notes (`user_id`, `note`, `time`) VALUES ($user_id, '', '$time')";
+$sql = "INSERT INTO notes (`userid`, `note`, `time`) VALUES ($userid, '', '$time')";
 $db->exec("BEGIN");
 $result = $db->query($sql);
 $db->exec("COMMIT");

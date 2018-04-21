@@ -32,23 +32,23 @@ include('connection.php');
                     <h1>Reset Password:</h1>
                     <div id="resultmessage"></div>
                     <?php
-                        if(!isset($_GET['user_id']) || !isset($_GET['key'])) {
+                        if(!isset($_GET['userid']) || !isset($_GET['key'])) {
                             echo '<div class="alert alert-danger">There was an error. It is possible that the link given in an email wasn not processed. Did you click on the email link?</div>';
                             exit;
                         }
-                    $user_id = $_GET['user_id'];
+                    $userid = $_GET['userid'];
                     $key = $_GET['key'];
                     $time = time() - 86400;
                     
                     // Prepare variables for the query
-                    $user_id = $db->escapeString ( $user_id );
+                    $userid = $db->escapeString ( $userid );
                     $key =  $db->escapeString ( $key );
                     
-                    // RUN the Query: Check the combo user_id and key exists and less than 24h old
-                    $sql = "SELECT user_id FROM forgotpassword WHERE rkey='$key' AND user_id='$user_id' AND time > '$time' AND status='pending'";
+                    // RUN the Query: Check the combo userid and key exists and less than 24h old
+                    $sql = "SELECT userid FROM forgotpassword WHERE rkey='$key' AND userid='$userid' AND time > '$time' AND status='pending'";
 
  
-                    $sql_count = "SELECT count(user_id) FROM forgotpassword WHERE rkey='$key' AND user_id='$user_id' AND time > '$time' AND status='pending'";
+                    $sql_count = "SELECT count(userid) FROM forgotpassword WHERE rkey='$key' AND userid='$userid' AND time > '$time' AND status='pending'";
  
                     $db->exec('BEGIN');
                     $ret_count = $db->query($sql_count);
@@ -63,7 +63,7 @@ include('connection.php');
                     
                     echo "<form method=post id='passwordreset'>
                         <input type=hidden name=key value=$key>
-                        <input type=hidden name=user_id value=$user_id>
+                        <input type=hidden name=userid value=$userid>
                         <div class='form-group'>
                             <label for='password2'>Enter new Password:</label>
                             <input type='password' name='password2' id='password2' placeholder='Re-enter Password' class='form-control'>

@@ -20,8 +20,8 @@ if(empty($_POST["currentpassword"])){
     $currentPassword = $db->escapeString ($currentPassword);
     $currentPassword = hash('sha256', $currentPassword);
     //check if given password is correct
-    $user_id = $_SESSION["user_id"];
-    $sql = "SELECT password FROM users WHERE user_id='$user_id'";
+    $userid = $_SESSION["userid"];
+    $sql = "SELECT password FROM users WHERE userid='$userid'";
     $db->exec('BEGIN');
     $result = $db->query( $sql);     
     $count = ($result->numColumns() && $result->columnType(0) != SQLITE3_NULL);
@@ -65,7 +65,7 @@ if($errors){
     $password = $db->escapeString($password);
     $password = hash('sha256', $password);
     //else run query and update password
-    $sql = "UPDATE users SET password='$password' WHERE user_id='$user_id'";
+    $sql = "UPDATE users SET password='$password' WHERE userid='$userid'";
      $db->exec('BEGIN');
     $result = $db->query( $sql);
      $db->exec('COMMIT');

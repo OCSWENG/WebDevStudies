@@ -40,7 +40,7 @@ if($errors){
         
         $row = $results->fetchArray();
         $db->exec('COMMIT');
-        $_SESSION['user_id']=$row['user_id'];
+        $_SESSION['userid']=$row['userid'];
         $_SESSION['username']=$row['username'];
         $_SESSION['email']=$row['email'];
     }
@@ -72,14 +72,14 @@ if($errors){
             return $b;
         }
         $f2authentificator2 = f2($authentificator2);
-        $user_id = $_SESSION['user_id'];
+        $userid = $_SESSION['userid'];
         $expiration = date('Y-m-d H:i:s', time() + 1296000);
         //Run query to store them in rememberme table
         
         $sql = "INSERT INTO rememberme
-        (`authentificator1`, `f2authentificator2`, `user_id`, `expires`)
+        (`authentificator1`, `f2authentificator2`, `userid`, `expires`)
         VALUES
-        ('$authentificator1', '$f2authentificator2', '$user_id', '$expiration')";
+        ('$authentificator1', '$f2authentificator2', '$userid', '$expiration')";
         
         $db->exec('BEGIN');
         $result = $db->query($sql);

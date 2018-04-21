@@ -3,7 +3,7 @@
 session_start();
 
 // USER is NOT LOGGED in AND the COOKIE REMEMBERME EXISTS
-]if(!isset($_SESSION['user_id'])) && !empty($_COOKIE['rememberme'])){
+]if(!isset($_SESSION['userid'])) && !empty($_COOKIE['rememberme'])){
     
     // GET AUTHENTICATORS FROM COOKIE
     
@@ -64,11 +64,11 @@ session_start();
         }
         
         $f2authentificator2 = f2($authentificator2);
-        $user_id = $_SESSION['user_id'];
+        $userid = $_SESSION['userid'];
         $expiration = date('y-m-d h:i:s', time() + 1296000);
         
-        $sql = "INSERT INTO REMEMBERME ('authentifactor1', 'f2authentificator2','user_id', 'expires')
-        VALUES ('$authentifactor1', '$f2authentificator2', '$user_id', '$expiration')";
+        $sql = "INSERT INTO REMEMBERME ('authentifactor1', 'f2authentificator2','userid', 'expires')
+        VALUES ('$authentifactor1', '$f2authentificator2', '$userid', '$expiration')";
         
         // $result = mysqli_query($link, $sql);
         
@@ -81,7 +81,7 @@ session_start();
         }
         
         // Log the user in and redirect to notes page
-        $_SESSION['user_id'] = $row['user_id'];
+        $_SESSION['userid'] = $row['userid'];
         header("location:mainpageloggedin.php");        
     }
 }

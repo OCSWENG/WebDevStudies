@@ -3,8 +3,8 @@
 session_start();
 include ('connection.php');
 
-//get user_id and new email sent through Ajax
-$userid = $_SESSION['user_id'];
+//get userid and new email sent through Ajax
+$userid = $_SESSION['userid'];
 $newemail = $_POST['email'];
 
 //check if new email exists
@@ -20,7 +20,7 @@ if($count>0){
 
 
 //get the current email
-$sql = "SELECT * FROM users WHERE user_id='$user_id'";
+$sql = "SELECT * FROM users WHERE userid='$userid'";
 $result = db->query($sql);
 
 $count = ($result->numColumns() && $result->columnType(0) != SQLITE3_NULL);
@@ -36,7 +36,7 @@ if($count == 1){
 $activationKey = bin2hex(openssl_random_pseudo_bytes(16));
 
 //insert new activation code in the users table
-$sql = "UPDATE users SET activation2='$activationKey' WHERE user_id = '$user_id'";
+$sql = "UPDATE users SET activation2='$activationKey' WHERE userid = '$userid'";
 $result = db->query($sql);
 if(!$result){
     echo "<div class='alert alert-danger'>There was an error inserting the user details in the database.</div>";exit;

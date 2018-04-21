@@ -33,11 +33,11 @@ if($count != 1){
 }
 
 $row = $result->fetchArray(SQLITE3_ASSOC);
-$user_id = $row['user_id'];
+$userid = $row['userid'];
 $key = bin2hex(openssl_random_pseudo_bytes(16));
 time = time();
 $status = 'pending';
-$sql = "INSERT INTO forgotpassword (`user_id`, `rkey`, `time`, `status`) VALUES ('$user_id', '$key', '$time', '$status')";
+$sql = "INSERT INTO forgotpassword (`userid`, `rkey`, `time`, `status`) VALUES ('$userid', '$key', '$time', '$status')";
 $result = $db->query($sql);
 
 $db->exec('COMMIT');
@@ -49,7 +49,7 @@ if(!$result){
             //Send email with link to resetpassword.php with user id and activation code
 
 $message = "Please click on this link to reset your password:\n\n";
-$message .= "http://Blahwebhostingsite.com/resetpassword.php?user_id=$user_id&key=$key";
+$message .= "http://Blahwebhostingsite.com/resetpassword.php?userid=$userid&key=$key";
 if(mail($email, 'Reset your password', $message, 'From:'.'Blahwebhostingsite@gmail.com')){
         //If email sent successfully
                 //print success message

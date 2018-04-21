@@ -2,8 +2,8 @@
 session_start();
 include('connection.php');
 
-//get the user_id
-$user_id = $_SESSION['user_id'];
+//get the userid
+$userid = $_SESSION['userid'];
 //run a query to delete empty notes
 $sql = "DELETE FROM notes WHERE note=''";
 $db->exec("BEGIN");
@@ -11,9 +11,9 @@ $result = $db->query($sql);
 if(!$result){
     echo '<div class="alert alert-warning">An error occured!</div>'; exit;
 }
-//run a query to look for notes corresponding to user_id
-$sql = "SELECT * FROM notes WHERE user_id ='$user_id' ORDER BY time DESC";
-$sqlCount  = "SELECT count(*) FROM notes WHERE user_id ='$user_id' ORDER BY time DESC";
+//run a query to look for notes corresponding to userid
+$sql = "SELECT * FROM notes WHERE userid ='$userid' ORDER BY time DESC";
+$sqlCount  = "SELECT count(*) FROM notes WHERE userid ='$userid' ORDER BY time DESC";
 $resultCount = $db->query($sqlCount);
 
 //shows notes or alert message

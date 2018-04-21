@@ -3,25 +3,25 @@ session_start();
 
 include('connection.php');
 
-// the user_id nad the key must be available 
-if(!isset($_POST['user_id']) || !isset($_POST['key'])) {
-    echo '<div class="alert alert-danger">There is no user_id or key available in the POST. Click on the link received by email.</div>';
+// the userid nad the key must be available 
+if(!isset($_POST['userid']) || !isset($_POST['key'])) {
+    echo '<div class="alert alert-danger">There is no userid or key available in the POST. Click on the link received by email.</div>';
     exit;
 }
 
-$user_id = $_POST['user_id'];
+$userid = $_POST['userid'];
 $key = $_POST['key'];
 $time = time() - 86400;
 
-// scrub the user_id and key
-$user_id = $db->escapeString ( $user_id );
+// scrub the userid and key
+$userid = $db->escapeString ( $userid );
 $key =  $db->escapeString ( $key );
 
-// RUN the Query: Check the combo user_id and key exists and less than 24h old
-$sql = "SELECT user_id FROM forgotpassword WHERE rkey='$key' AND user_id='$user_id' AND time > '$time' AND status='pending'";
+// RUN the Query: Check the combo userid and key exists and less than 24h old
+$sql = "SELECT userid FROM forgotpassword WHERE rkey='$key' AND userid='$userid' AND time > '$time' AND status='pending'";
 
  
-$sql_count = "SELECT count(user_id) FROM forgotpassword WHERE rkey='$key' AND user_id='$user_id' AND time > '$time' AND status='pending'";
+$sql_count = "SELECT count(userid) FROM forgotpassword WHERE rkey='$key' AND userid='$userid' AND time > '$time' AND status='pending'";
 
 $db->exec('BEGIN');
 $ret_count = $db->query($sql_count);
@@ -71,7 +71,7 @@ if($errors){
 $password = $db->escapeString($password);
 $password = hash('sha256', $password);
 
-$sql = "UPDATE users SET password='$password' WHERE user_id='$user_id'";
+$sql = "UPDATE users SET password='$password' WHERE userid='$userid'";
 
 $db->exec('BEGIN');
 $result = $db->query($sql);
@@ -82,7 +82,7 @@ if(!$result){
     exit;
 }
 
-$sql = "UPDATE forgotpassword SET status='used' WHERE rkey='$key' AND user_id='$user_id'";
+$sql = "UPDATE forgotpassword SET status='used' WHERE rkey='$key' AND userid='$userid'";
 $db->exec('BEGIN');
 $result = $db->query($sql);
 $db->exec('COMMIT');

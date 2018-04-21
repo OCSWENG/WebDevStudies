@@ -29,14 +29,14 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbarCollapse">
                       <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Profile</a></li>
+                        <li class="active"><a href="profilepage.php">Profile</a></li>
                         <li><a href="#">Help</a></li>
                         <li><a href="#">Contact us</a></li>
-                        <li><a href="#">MyNotes</a></li>
+                        <li><a href="mainpageloggedin.php">MyNotes</a></li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logged in as <strong>user name</strong></a></li>
-                        <li><a href="#">Log out</a></li>
+                        <li><a href="#">Logged in as <b><?php echo $_SESSION['username']?></b></a></li>
+                        <li><a href="index.php?logout=1">Log out</a></li>
                       </ul>
                 </div>
             </div>
