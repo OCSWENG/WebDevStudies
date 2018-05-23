@@ -16,31 +16,30 @@
   <body>
     <!-- Navigation Bar -->
      <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
-
             <div class="container-fluid">
-
-                <div class="navbar-header">
-
-                    <a class="navbar-brand">Online Notes</a>
-                    <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse" id="navbarCollapse">
-                      <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact us</a></li>
-                      </ul>
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#loginModal" data-toggle="modal">Login</a></li>
-                      </ul>
-
-                </div>
+               <nav class="navbar navbar-expand-lg navbar-light navbar-right ">
+                  <a class="navbar-brand" >Online Notes</a>
+                  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                   
+                  <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link disabled" href="#loginModal" data-toggle="modal">Login</a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
             </div>
     </nav>
       
@@ -64,8 +63,7 @@
                             Login:
                           </h4>
                       </div>
-                  
-                  
+
                   <div class="modal-body">
                       <div id="loginmesage"></div>
                       
@@ -73,7 +71,6 @@
                           <label for="loginemail" class="sr-only">Email:</label>
                           
                           <input class="form-control" type="email" name="loginemail" id="loginemail" placeholder="Email" maxlength="50">
-                      
                       </div>
                       
                       <div class="form-group">
@@ -87,7 +84,6 @@
                               Remember me 
                           </label>
                           <a class="pull-right" style="cursor: pointer" data-dismiss="modal" data-target="#forgotpasswordModal" data-toggle="modal">Forgot Password?</a>
-                                                
                       </div>
                   </div>
                   
@@ -99,7 +95,6 @@
                       <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">
                         Register
                       </button>
-                  
                   </div>
               </div>
               </div>

@@ -18,27 +18,33 @@
      <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
 
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand">Online Notes</a>
-                    <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
-                          <span class="sr-only">Toggle navigation</span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                          <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse" id="navbarCollapse">
-                      <ul class="nav navbar-nav">
-                        <li class="active"><a href="profilepage.php">Profile</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="mainpageloggedin.php">MyNotes</a></li>
+                
+                <nav class="navbar navbar-expand-lg navbar-light navbar-right ">
+                  <a class="navbar-brand" href="#">Online Notes</a>
+                  <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="mainpageloggedin.php" data-toggle="modal">My Notes</a>
+                      </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item"><a  class="nav-link" href="#">Logged in as <b><?php echo $username; ?></b></a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?logout=1">Log out</a></li>
                       </ul>
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Logged in as <b><?php echo $_SESSION['username']?></b></a></li>
-                        <li><a href="index.php?logout=1">Log out</a></li>
-                      </ul>
-                </div>
+                  </div>
+                </nav>
             </div>
     </nav>
       
